@@ -1,0 +1,1229 @@
+/* =========================================================
+           RESET
+        ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    color: #ffffff;
+
+    background: #000000;
+
+    font-family:
+        "Netflix Sans",
+        "Helvetica Neue",
+        "Segoe UI",
+        Roboto,
+        Ubuntu,
+        sans-serif;
+
+    font-size: 16px;
+    line-height: 1.4;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+           PAGE
+        ========================================================= */
+
+.page {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background:
+        linear-gradient(180deg,
+            #4b171b 0%,
+            #3d1115 14%,
+            #2b0b0f 32%,
+            #190508 58%,
+            #0b0203 80%,
+            #000000 100%);
+}
+
+
+.page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse 80% 45% at 50% 0%,
+            rgba(180, 25, 35, 0.18),
+            transparent 70%);
+}
+
+
+/* =========================================================
+           HEADER
+        ========================================================= */
+
+.header {
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+    height: 68px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+.header-container {
+    width: 100%;
+    height: 100%;
+
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.logo {
+    display: inline-flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    user-select: none;
+}
+
+
+.logo img {
+    display: block;
+
+    width: 148px;
+    height: auto;
+
+    max-height: 42px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+           MAIN
+        ========================================================= */
+
+.main {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 68px);
+}
+
+
+.layout-container {
+    width: 100%;
+
+    min-height:
+        calc(100vh - 68px);
+
+    padding: 32px 20px;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: flex-start;
+}
+
+
+.form-column {
+    width: 100%;
+
+    max-width: 360px;
+
+    min-width: 0;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+           STEP WRAPPER
+           
+           IMPORTANT:
+           All screens use the exact same top-left position.
+           The wrapper is allowed to grow for the payment screen.
+        ========================================================= */
+
+.step-wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    min-height: 430px;
+
+    overflow: visible;
+}
+
+
+.step {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    transition:
+        opacity 0.28s ease,
+        transform 0.35s cubic-bezier(0.4,
+            0,
+            0.2,
+            1);
+}
+
+
+/* =========================================================
+           STEP POSITIONS
+
+           The first screen establishes the exact position.
+
+           Every other screen is absolutely positioned at:
+               top: 0
+               left: 0
+
+           This prevents Review, Password and Payment from
+           moving downward when they become active.
+        ========================================================= */
+
+.initial {
+    position: relative;
+
+    top: 0;
+    left: 0;
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
+}
+
+
+.review,
+.password-step,
+.payment-step {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    opacity: 0;
+
+    transform: translateX(45px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+           REVIEW ACTIVE
+        ========================================================= */
+
+.step-wrapper.review-active .initial {
+    opacity: 0;
+
+    transform: translateX(-45px);
+
+    pointer-events: none;
+}
+
+
+.step-wrapper.review-active .review {
+    top: 0;
+    left: 0;
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+           PASSWORD ACTIVE
+        ========================================================= */
+
+.step-wrapper.password-active .initial {
+    opacity: 0;
+
+    transform: translateX(-45px);
+
+    pointer-events: none;
+}
+
+
+.step-wrapper.password-active .review {
+    opacity: 0;
+
+    transform: translateX(-45px);
+
+    pointer-events: none;
+}
+
+
+.step-wrapper.password-active .password-step {
+    top: 0;
+    left: 0;
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+           PAYMENT ACTIVE
+        ========================================================= */
+
+.step-wrapper.payment-active .initial {
+    opacity: 0;
+
+    transform: translateX(-45px);
+
+    pointer-events: none;
+}
+
+
+.step-wrapper.payment-active .review {
+    opacity: 0;
+
+    transform: translateX(-45px);
+
+    pointer-events: none;
+}
+
+
+.step-wrapper.payment-active .password-step {
+    opacity: 0;
+
+    transform: translateX(-45px);
+
+    pointer-events: none;
+}
+
+
+.step-wrapper.payment-active .payment-step {
+    top: 0;
+    left: 0;
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+           HEADINGS
+        ========================================================= */
+
+.heading {
+    margin: 0 0 8px 0;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.25px;
+}
+
+
+.subheading {
+    margin: 0 0 20px 0;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+           INPUTS
+        ========================================================= */
+
+.input-wrapper,
+.password-wrapper,
+.payment-field,
+.billing-field {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+
+.text-input,
+.payment-input,
+.billing-input,
+.billing-select {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    height: 50px;
+
+    padding: 14px 16px;
+
+    border: 1px solid #8c8c8c;
+
+    border-radius: 4px;
+
+    outline: none;
+
+    background: rgba(35, 35, 35, 0.92);
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.text-input::placeholder,
+.payment-input::placeholder,
+.billing-input::placeholder {
+    color: #b3b3b3;
+
+    opacity: 1;
+}
+
+
+.text-input:hover,
+.payment-input:hover,
+.billing-input:hover,
+.billing-select:hover {
+    border-color: #aaaaaa;
+}
+
+
+.text-input:focus,
+.payment-input:focus,
+.billing-input:focus,
+.billing-select:focus {
+    border-color: #ffffff;
+
+    background: rgba(48, 48, 48, 0.95);
+}
+
+
+/* =========================================================
+           ERROR
+        ========================================================= */
+
+.error {
+    display: none;
+
+    margin-top: 7px;
+
+    color: #ffa00a;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+}
+
+
+.input-wrapper.invalid .text-input {
+    border-color: #ffa00a;
+}
+
+
+.input-wrapper.invalid .error {
+    display: block;
+}
+
+
+/* =========================================================
+           PRIMARY BUTTON
+        ========================================================= */
+
+.primary-button {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 48px;
+
+    margin-top: 12px;
+
+    padding: 12px 24px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: #e50914;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease;
+}
+
+
+.primary-button:hover {
+    background: #f40612;
+}
+
+
+.primary-button:active {
+    transform: scale(0.99);
+}
+
+
+/* =========================================================
+           HELP
+        ========================================================= */
+
+.get-help {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 32px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    cursor: pointer;
+}
+
+
+.get-help:hover .help-label {
+    text-decoration: underline;
+}
+
+
+.chevron {
+    width: 7px;
+    height: 7px;
+
+    border-right: 1.5px solid #ffffff;
+    border-bottom: 1.5px solid #ffffff;
+
+    transform:
+        rotate(45deg) translateY(-2px);
+
+    transition: transform 0.2s ease;
+}
+
+
+.get-help.open .chevron {
+    transform:
+        rotate(225deg) translateY(1px);
+}
+
+
+.help-menu {
+    width: 100%;
+    max-width: 100%;
+
+    max-height: 0;
+
+    margin-top: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.3s ease,
+        margin-top 0.3s ease,
+        opacity 0.25s ease;
+}
+
+
+.help-menu.open {
+    max-height: 180px;
+
+    margin-top: 12px;
+
+    opacity: 1;
+}
+
+
+.help-item {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px 0;
+
+    border: none;
+
+    border-bottom:
+        1px solid rgba(255,
+            255,
+            255,
+            0.12);
+
+    background: transparent;
+
+    color: #ffffff;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.help-item:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+           RECAPTCHA DEMO
+        ========================================================= */
+
+.recaptcha {
+    max-width: 350px;
+
+    margin-top: 28px;
+
+    color: #8c8c8c;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+           REVIEW
+        ========================================================= */
+
+.review .heading {
+    margin-bottom: 20px;
+}
+
+
+.account-display {
+    display: flex;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 50px;
+
+    padding: 0 16px;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border-radius: 4px;
+
+    background: rgba(128,
+            112,
+            114,
+            0.72);
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+
+.account-email {
+    min-width: 0;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+.change-button {
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+
+.offers {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+    cursor: pointer;
+}
+
+
+.offers-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 20px;
+    height: 20px;
+
+    margin: 0;
+
+    border:
+        1px solid #8c8c8c;
+
+    border-radius: 2px;
+
+    background: #000000;
+
+    cursor: pointer;
+}
+
+
+.offers-checkbox:checked {
+    background: #ffffff;
+
+    border-color: #ffffff;
+}
+
+
+.offers-checkbox:checked::after {
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+    top: 2px;
+
+    width: 5px;
+    height: 10px;
+
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+
+    transform: rotate(45deg);
+}
+
+
+.offers-text {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1.4;
+}
+
+
+.review-button {
+    margin-top: 24px;
+}
+
+
+/* =========================================================
+           PASSWORD
+        ========================================================= */
+
+.back-button,
+.payment-back {
+    display: inline-flex;
+
+    align-items: center;
+
+    margin: 0 0 25px 0;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+.back-button:hover,
+.payment-back:hover {
+    text-decoration: underline;
+}
+
+
+.password-input {
+    padding-right: 72px;
+}
+
+
+.show-password {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    padding: 6px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.show-password:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+           PAYMENT SCREEN
+        ========================================================= */
+
+.payment-description {
+    margin: 0 0 20px 0;
+
+    color: rgba(255,
+            255,
+            255,
+            0.7);
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+.payment-field {
+    margin-bottom: 12px;
+}
+
+
+.payment-row,
+.billing-row {
+    display: flex;
+
+    width: 100%;
+
+    gap: 12px;
+}
+
+
+.payment-row .payment-field,
+.billing-row .billing-field {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+           BILLING
+        ========================================================= */
+
+.billing-title {
+    margin: 24px 0 12px 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+
+.billing-select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-right: 40px;
+
+    background-image:
+        linear-gradient(45deg,
+            transparent 50%,
+            #ffffff 50%),
+        linear-gradient(135deg,
+            #ffffff 50%,
+            transparent 50%);
+
+    background-position:
+        calc(100% - 18px) 21px,
+        calc(100% - 12px) 21px;
+
+    background-size:
+        6px 6px,
+        6px 6px;
+
+    background-repeat: no-repeat;
+}
+
+
+.billing-select option {
+    background: #232323;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+           DEMO NOTICE
+        ========================================================= */
+
+.demo-notice {
+    margin-top: 16px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid rgba(255,
+            255,
+            255,
+            0.14);
+
+    border-radius: 4px;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.05);
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.65);
+
+    font-size: 12px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+           DEMO INDICATOR
+        ========================================================= */
+
+.demo-indicator {
+    position: fixed;
+
+    right: 14px;
+    bottom: 12px;
+
+    z-index: 100;
+
+    padding: 5px 8px;
+
+    border:
+        1px solid rgba(255,
+            255,
+            255,
+            0.15);
+
+    border-radius: 3px;
+
+    background:
+        rgba(0,
+            0,
+            0,
+            0.55);
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.45);
+
+    font-size: 9px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+           DESKTOP
+        ========================================================= */
+
+@media (min-width: 700px) {
+
+    .header-container {
+        padding: 0 32px;
+    }
+
+
+    .layout-container {
+        padding: 32px;
+    }
+
+}
+
+
+/* =========================================================
+           LARGE DESKTOP
+        ========================================================= */
+
+@media (min-width: 1000px) {
+
+    .header-container {
+        max-width: 1280px;
+
+        margin: 0 auto;
+
+        padding: 0 20px;
+    }
+
+
+    .layout-container {
+        max-width: 1280px;
+
+        margin: 0 auto;
+
+        padding: 32px 20px;
+    }
+
+
+    .form-column {
+        max-width: 360px;
+    }
+
+}
+
+
+/* =========================================================
+           MOBILE
+        ========================================================= */
+
+@media (max-width: 599px) {
+
+    .header {
+        height: 68px;
+    }
+
+
+    .header-container {
+        padding: 0 20px;
+    }
+
+
+    .logo img {
+        width: 138px;
+    }
+
+
+    .layout-container {
+        padding: 32px 20px;
+    }
+
+
+    .form-column {
+        width: 100%;
+
+        max-width: none;
+
+        min-width: 0;
+    }
+
+
+    .heading {
+        font-size: 23px;
+    }
+
+
+    .payment-row,
+    .billing-row {
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================================
+           VERY SMALL SCREEN
+        ========================================================= */
+
+@media (max-width: 360px) {
+
+    .header-container {
+        padding: 0 16px;
+    }
+
+
+    .layout-container {
+        padding: 28px 16px;
+    }
+
+
+    .heading {
+        font-size: 22px;
+    }
+
+
+    .subheading,
+    .payment-description {
+        font-size: 14px;
+    }
+
+
+    .payment-row,
+    .billing-row {
+        flex-direction: column;
+
+        gap: 0;
+    }
+
+}
+
+
+/* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+
+}

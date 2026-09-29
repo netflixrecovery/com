@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="apple-touch-icon" content="https://assets.nflxext.com/en_us/layout/ecweb/netflix-app-icon_152.jpg">
+
+    <link type="text/css" rel="stylesheet"
+        href="https://assets.nflxext.com/web/ffe/wp/@nf-web-ui/ui-shared/dist/less/pages/clcs/shared.fd4b86a52de5dc09baaa.css"
+        crossorigin="anonymous" data-uia="botLink">
+
+    <link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico">
+
+    <link rel="apple-touch-icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png">
+
+    <title>Netflix</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <div class="page">
+
+
+        <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+        <header class="header">
+
+            <div class="header-container">
+
+                <a href="#" class="logo" aria-label="Demo home" onclick="return false;">
+
+                    <img src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAdEhm1UzVexHjKqFOP9W6E2UVtkWFvL-vdxIEbTU81rsqNuPmDDy_dQvmQ85ath49JBruVV4aGQA3gY2Dl5SiqFf-AEwPAZBTNkW8FMxGXpDN2mHrf8KlRRiddj1P422ZW1eZkZNWLTd.svg"
+                        alt="Demo logo">
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================================
+         MAIN
+    ========================================================= -->
+
+        <main class="main">
+
+            <div class="layout-container">
+
+                <div class="form-column">
+
+                    <div class="step-wrapper" id="stepWrapper">
+
+
+                        <!-- =================================================
+                         STEP 1
+                    ================================================= -->
+
+                        <section class="step initial" aria-label="Enter your information">
+
+                            <h1 class="heading">
+                                Enter your info to sign in
+                            </h1>
+
+
+                            <p class="subheading">
+                                Or get started with a new account.
+                            </p>
+
+
+                            <div>
+
+                                <div class="input-wrapper" id="inputWrapper">
+
+                                    <input id="emailInput" class="text-input" type="text"
+                                        placeholder="Email or mobile number" autocomplete="off" spellcheck="false"
+                                        aria-label="Email or mobile number">
+
+
+                                    <div class="error">
+                                        Please enter your email
+                                        or mobile number.
+                                    </div>
+
+                                </div>
+
+
+                                <button type="button" class="primary-button" id="emailContinue">
+                                    Continue
+                                </button>
+
+                            </div>
+
+
+                            <button type="button" class="get-help" id="getHelp">
+
+                                <span class="help-label">
+                                    Get Help
+                                </span>
+
+                                <span class="chevron" aria-hidden="true"></span>
+
+                            </button>
+
+
+                            <div class="help-menu" id="helpMenu">
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Use a sign-in code
+                                </button>
+
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Forgot password?
+                                </button>
+
+                            </div>
+
+
+                            <p class="recaptcha">
+                                This page is protected by Google reCAPTCHA to ensure you're not a bot.
+                            </p>
+
+                        </section>
+
+
+                        <!-- =================================================
+                         STEP 2
+                    ================================================= -->
+
+                        <section class="step review" aria-label="Review your information">
+
+                            <h1 class="heading">
+                                Review to continue
+                            </h1>
+
+
+                            <div class="account-display">
+
+                                <span class="account-email" id="reviewEmail">
+                                    demo@example.com
+                                </span>
+
+
+                                <button type="button" class="change-button" id="changeEmail">
+                                    Change
+                                </button>
+
+                            </div>
+
+
+                            <label class="offers">
+
+                                <input type="checkbox" class="offers-checkbox">
+
+
+                                <span class="offers-text">
+                                    Please do not email me
+                                    Netflix special offers.
+                                </span>
+
+                            </label>
+
+
+                            <button type="button" class="primary-button review-button" id="reviewContinue">
+                                Continue
+                            </button>
+
+
+                            <button type="button" class="get-help" id="reviewHelp">
+
+                                <span class="help-label">
+                                    Get Help
+                                </span>
+
+                                <span class="chevron" aria-hidden="true"></span>
+
+                            </button>
+
+
+                            <div class="help-menu" id="reviewHelpMenu">
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Use a sign-in code
+                                </button>
+
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Forgot password?
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =================================================
+                         STEP 3
+                    ================================================= -->
+
+                        <section class="step password-step" aria-label="password screen">
+
+                            <button type="button" class="back-button" id="passwordBack">
+                                ← Back
+                            </button>
+
+
+                            <h1 class="heading">
+                                Enter your password
+                            </h1>
+
+
+                            <div class="password-wrapper">
+
+                                <input id="passwordInput" class="text-input password-input" type="password"
+                                    placeholder="password" autocomplete="off" aria-label="Password">
+
+
+                                <button type="button" class="show-password" id="showPassword">
+                                    SHOW
+                                </button>
+
+                            </div>
+
+
+                            <button type="button" class="primary-button" id="signInButton">
+                                Continue
+                            </button>
+
+
+                            <button type="button" class="get-help" id="passwordHelp">
+
+                                <span class="help-label">
+                                    Get Help
+                                </span>
+
+                                <span class="chevron" aria-hidden="true"></span>
+
+                            </button>
+
+
+                            <div class="help-menu" id="passwordHelpMenu">
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Forgot password?
+                                </button>
+
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Use a sign-in code
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =================================================
+                         STEP 4 — PAYMENT DEMO
+                    ================================================= -->
+
+                        <section class="step payment-step" aria-label="Demo payment information">
+
+                            <button type="button" class="payment-back" id="paymentBack">
+                                ← Back
+                            </button>
+
+
+                            <h1 class="heading">
+                                Update your payment information
+                            </h1>
+
+
+                            <!-- DEMO CARDHOLDER -->
+
+                            <div class="payment-field">
+
+                                <input id="demoCardName" class="payment-input" type="text" placeholder="cardholder name"
+                                    autocomplete="off">
+
+                            </div>
+
+
+                            <!-- DEMO CARD NUMBER -->
+
+                            <div class="payment-field">
+
+                                <input id="demoCardNumber" class="payment-input" type="text" inputmode="numeric"
+                                    placeholder="card number" autocomplete="off" maxlength="19">
+
+                            </div>
+
+
+                            <!-- EXPIRY / DEMO CVV -->
+
+                            <div class="payment-row">
+
+                                <div class="payment-field">
+
+                                    <input id="demoExpiry" class="payment-input" type="text" inputmode="numeric"
+                                        placeholder="MM/YY" autocomplete="off" maxlength="5">
+
+                                </div>
+
+
+                                <div class="payment-field">
+
+                                    <input id="demoCvv" class="payment-input" type="text" inputmode="numeric"
+                                        placeholder="CVV" autocomplete="off" maxlength="4">
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BILLING ADDRESS -->
+
+                            <div class="billing-title">
+                                Billing address
+                            </div>
+
+
+                            <div class="billing-field">
+
+                                <input id="billingAddress" class="billing-input" type="text"
+                                    placeholder="Billing address" autocomplete="off">
+
+                            </div>
+
+
+                            <div class="billing-field">
+
+                                <input id="billingCity" class="billing-input" type="text" placeholder="City"
+                                    autocomplete="off">
+
+                            </div>
+
+
+                            <div class="billing-row">
+
+                                <div class="billing-field">
+
+                                    <input id="billingState" class="billing-input" type="text"
+                                        placeholder="State / Province" autocomplete="off">
+
+                                </div>
+
+
+                                <div class="billing-field">
+
+                                    <input id="billingZip" class="billing-input" type="text"
+                                        placeholder="ZIP / Postal code" autocomplete="off">
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- COUNTRY -->
+
+                            <div class="billing-field">
+
+                                <select id="billingCountry" class="billing-select" aria-label="Country">
+
+                                    <option value="US" selected>
+                                        United States
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- DEMO BUTTON -->
+
+                            <button type="button" class="primary-button" id="updatePaymentButton">
+                                Update payment
+                            </button>
+
+
+                            <!-- DEMO NOTICE -->
+
+
+                            <!-- HELP -->
+
+                            <button type="button" class="get-help" id="paymentHelp">
+
+                                <span class="help-label">
+                                    Get Help
+                                </span>
+
+                                <span class="chevron" aria-hidden="true"></span>
+
+                            </button>
+
+
+                            <div class="help-menu" id="paymentHelpMenu">
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Contact support
+                                </button>
+
+
+                                <button type="button" class="help-item" data-demo-action>
+                                    Return to sign in
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
